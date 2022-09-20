@@ -3,7 +3,12 @@ import counterReducer from './counterReducer'
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    player1: counterReducer,
+    player2: counterReducer,
+    player3: counterReducer,
+    player4: counterReducer,
+    player5: counterReducer,
+    player6: counterReducer,
   },
 })
 
