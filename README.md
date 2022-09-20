@@ -16,3 +16,8 @@ $ npm i
 $ npx expo start
 ```
 
+## Contributing to project
+- We will be following a development branch git model. 
+- When creating PRs and new branches we will always create new branches from development and merge back into development.
+- The only time we will merge into main is for releases.
+- This will allow us to set up easier CI/CD where any PR/merge to development is tested on change and any merge to master is automatically built and released.
