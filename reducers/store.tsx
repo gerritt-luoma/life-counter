@@ -1,16 +1,19 @@
-import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './counterReducer'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+//import counterReducer from './counterReducer'
+import createPlayerWithNumber from './playerReducer'
+
+
 
 export const store = configureStore({
   reducer: {
-    player1: counterReducer,
-    player2: counterReducer,
-    player3: counterReducer,
-    player4: counterReducer,
-    player5: counterReducer,
-    player6: counterReducer,
-  },
-})
+    player1: createPlayerWithNumber(1),
+    player2: createPlayerWithNumber(2),
+    player3: createPlayerWithNumber(3),
+    player4: createPlayerWithNumber(4),
+    player5: createPlayerWithNumber(5),
+    player6: createPlayerWithNumber(6),
+  }
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>

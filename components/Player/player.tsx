@@ -15,31 +15,33 @@ export default function Player({ color, number }: PlayerProps) {
     const lifeTotal = useSelector((state: RootState) => {
         switch(number) {
             case 1:
-                return state.player1.value;
+                return state.player1;
             case 2:
-                return state.player2.value;
+                return state.player2;
             case 3:
-                return state.player3.value;
+                return state.player3;
             case 4:
-                return state.player4.value;
+                return state.player4;
             case 5:
-                return state.player5.value;
+                return state.player5;
             default:
                 /* Adding this default to get around
                 typescript issues for now */
-                return state.player6.value;
+                return state.player6;
         }
     });
 
     return (
         <View>
             <HealthButton
-            onPress={decrement}
+            playerNumber={number}
+            decrement={true}
             title={"-"}
             />
-            <Text>{lifeTotal}</Text>
+            <Text>{lifeTotal.value}</Text>
             <HealthButton
-            onPress={increment}
+            playerNumber={number}
+            decrement={false}
             title={"+"}
             />
         </View>

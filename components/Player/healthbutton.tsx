@@ -4,17 +4,21 @@ import { useDispatch } from "react-redux";
 import { View, Button } from "react-native";
 
 interface HealthButtonProps {
-    onPress: Function,
-    title: string
+    title: string,
+    decrement: boolean,
+    playerNumber: number
 }
 
-export default function HealthButton( { onPress, title } : HealthButtonProps) {
+export default function HealthButton( { title, decrement, playerNumber } : HealthButtonProps) {
     const dispatch = useDispatch();
+
     return (
         <View>
             <Button
                 title={title}
-                onPress={() => dispatch(onPress())}
+                onPress={() => dispatch({
+                    type: decrement ? `DECREMENT_${playerNumber}` : `INCREMENT_${playerNumber}`
+                })}
             />
         </View>
     )
