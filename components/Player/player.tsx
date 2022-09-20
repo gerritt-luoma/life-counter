@@ -1,9 +1,8 @@
-import React from "react";
-import type { RootState } from "../../reducers/store";
-import { useSelector } from "react-redux";
-import { decrement, increment } from "../../reducers/counterReducer";
 import HealthButton from "./healthbutton";
+import React from "react";
+import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
+import type { RootState } from "../../reducers/store";
 
 interface PlayerProps {
     color: string,
