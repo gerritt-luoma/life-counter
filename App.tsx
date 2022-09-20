@@ -8,7 +8,8 @@ export default function App() {
     <Provider store={store}>
       <View style={styles.container}>
         <Player color={'red'} number={1}/>
-        <Player color={'red'} number={2}/>
+        <Player color={'blue'} number={2}/>
+        <Player color={'pink'} number={3}/>
         <StatusBar style="auto" />
       </View>
     </Provider>

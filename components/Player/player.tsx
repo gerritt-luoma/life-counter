@@ -3,7 +3,7 @@ import type { RootState } from "../../reducers/store";
 import { useSelector } from "react-redux";
 import { decrement, increment } from "../../reducers/counterReducer";
 import HealthButton from "./healthbutton";
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 interface PlayerProps {
     color: string,
@@ -32,13 +32,13 @@ export default function Player({ color, number }: PlayerProps) {
     });
 
     return (
-        <View>
+        <View style={[styles.container, { backgroundColor: color}]}>
             <HealthButton
             playerNumber={number}
             decrement={true}
             title={"-"}
             />
-            <Text>{lifeTotal.value}</Text>
+            <Text style={styles.text}>{lifeTotal.value}</Text>
             <HealthButton
             playerNumber={number}
             decrement={false}
@@ -47,3 +47,18 @@ export default function Player({ color, number }: PlayerProps) {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        justifyContent: 'space-evenly',
+        flexDirection: 'row',
+        flex: 1,
+        backgroundColor: 'red',
+        width: '100%'
+    },
+    text: {
+        fontSize: 70,
+        color: 'black'
+    }
+})
