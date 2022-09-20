@@ -28,12 +28,17 @@ export default function HealthButton( { title, decrement, playerNumber } : Healt
 const styles = StyleSheet.create({
     text: {
         fontSize: 40,
-        color: 'black'
+        color: 'black',
+        textAlign: 'center',
     },
     button: {
         width: 50,
         height: 50,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        textAlign: 'center',
+        backgroundColor: 'white',
+        opacity: .33,
+        borderRadius: 50
     }
 })
