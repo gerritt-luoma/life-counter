@@ -1,5 +1,4 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-//import counterReducer from './counterReducer'
+import { configureStore } from '@reduxjs/toolkit'
 import createPlayerWithNumber from './playerReducer'
 
 

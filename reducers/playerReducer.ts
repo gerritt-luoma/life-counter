@@ -8,23 +8,6 @@ const initialState: PlayerState = {
     value: 0,
 }
 
-/*function createPlayerSliceWithNumber(playerNumber=1)
-{
-    const playerSlice = createSlice({
-        name: `player${playerNumber}`,
-        initialState,
-        reducers: {
-            increment(state) {
-                state.value++
-            },
-            decrement(state) {
-                state.value--
-            }
-        }
-    });
-    return playerSlice.reducer
-}*/
-
 function createPlayerWithNumber(playerNumber=1) {
     return function player(state = initialState, action: AnyAction) {
         switch(action.type) {
