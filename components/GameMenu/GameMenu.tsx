@@ -1,16 +1,25 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
+import MenuButton from "./MenuButton";
+import type { RootState } from "../../reducers/store";
+import { useSelector } from "react-redux";
 
 export default function GameMenu() {
+    const menuState = useSelector((state: RootState) => {
+        return state.menu;
+    });
+
     return (
         <>
-            <View style={styles.container}>
-                <Pressable
-                onPress={() => console.log('Pressed')}
-                style={styles.button}
-                >
-                    <Text style={styles.text}>~</Text>
-                </Pressable>
+            <View style={[
+                styles.container,
+                {
+                    height: menuState.pressed ? '100%' : 50,
+                    width: menuState.pressed ? '100%' : 50,
+                    borderRadius: menuState.pressed ? 0 : 50,
+                }
+            ]}>
+                <MenuButton/>
             </View>
         </>
     )
@@ -19,22 +28,8 @@ export default function GameMenu() {
 const styles = StyleSheet.create({
     container: {
         position: 'absolute',
-        backgroundColor: 'black',
-        borderRadius: 50,
-        borderColor: 'white',
-        borderWidth: 2,
+        backgroundColor: 'rgba(0,0,0,.5)',
         alignItems: 'center',
         justifyContent: 'center',
     },
-    button: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        height: 50,
-        width: 50
-    },
-    text: {
-        color: 'white',
-        fontSize: 30
-    }
 })

@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import createPlayerWithNumber from './playerReducer'
+import menuReducer from './menuReducer';
 
 
 
@@ -11,6 +12,7 @@ export const store = configureStore({
     player4: createPlayerWithNumber(4),
     player5: createPlayerWithNumber(5),
     player6: createPlayerWithNumber(6),
+    menu: menuReducer
   }
 });
 
