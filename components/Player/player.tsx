@@ -1,4 +1,4 @@
-import HealthButton from "./healthbutton";
+import HealthButton from "./HealthButton";
 import React from "react";
 import { useSelector } from "react-redux";
 import { View, Text, StyleSheet } from "react-native";
