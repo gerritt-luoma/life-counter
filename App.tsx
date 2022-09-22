@@ -28,11 +28,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  testView: {
-    position: 'absolute',
-    height: 50,
-    width: 50,
-    borderRadius: 50,
-    backgroundColor: 'black'
-  }
 });
