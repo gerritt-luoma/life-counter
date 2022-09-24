@@ -75,7 +75,6 @@ function displayButtons() {
     return subButtons.map((button, index) => {
         const top = (Math.sin(radiansBetween*index - shift) * 110) + 100;
         const left = (Math.cos(radiansBetween * index - shift) * 110) + 100;
-        console.log(`index: ${index}, left: ${left}, top: ${top}`)
         return <MenuButton
             key={index}
             color={button.color}
