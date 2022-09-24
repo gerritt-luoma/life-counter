@@ -2,10 +2,25 @@ import React from "react";
 import { Pressable, Text, StyleSheet, View } from "react-native";
 import { useDispatch } from "react-redux";
 
-export default function MenuButton() {
+interface MenuButtonProps {
+    color: string,
+    pressed?: boolean,
+    left?: number,
+    top?: number
+}
+
+export default function MenuButton({ color, pressed, left, top }: MenuButtonProps) {
     const dispatch = useDispatch();
     return (
-        <View style={styles.container}>
+        <View style={[
+            styles.container,
+            {
+                backgroundColor: color,
+                position: pressed ? 'absolute' : 'relative',
+                top: top,
+                left: left
+            }
+            ]}>
             <Pressable
             onPress={() =>{
                 console.log('Pressed');
@@ -23,11 +38,10 @@ const styles = StyleSheet.create({
     container: {
         height: 50,
         width: 50,
-        backgroundColor: 'black',
         opacity: 1,
         borderRadius: 50,
         borderWidth: 2,
-        borderColor: 'white'
+        borderColor: 'white',
     },
     button: {
         flex: 1,
