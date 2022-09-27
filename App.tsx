@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { store } from './reducers/store';
-import Player from './components/Player/player';
+import Player from './components/Player/Player';
+import GameMenu from './components/GameMenu/GameMenu';
 export default function App() {
   return (
     <Provider store={store}>
@@ -13,6 +14,7 @@ export default function App() {
         <Player color={'green'} number={4}/>
         <Player color={'white'} number={5}/>
         <Player color={'gray'} number={6}/>
+        <GameMenu/>
         <StatusBar style="auto" />
       </View>
     </Provider>
