@@ -10,7 +10,11 @@ const initialState: GameState = {
 
 function gameReducer(state = initialState, action: AnyAction) {
     switch(action.type) {
+        case 'SET_NUM_PLAYERS':
+            return {...state, numPlayers: action.payload};
         default:
             return state;
     }
 }
+
+export default gameReducer;
