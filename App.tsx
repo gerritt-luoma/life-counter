@@ -6,9 +6,9 @@ import Player from './components/Player/Player';
 import GameMenu from './components/GameMenu/GameMenu';
 import { FC } from 'react';
 export default function App() {
-  const gameState = useSelector((state: RootState) => {
-    return state.game
-  });
+  // const gameState = useSelector((state: RootState) => {
+  //   return state.game
+  // });
   return (
     <Provider store={store}>
       <View style={styles.container}>
