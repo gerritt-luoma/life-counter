@@ -1,17 +1,17 @@
 import { AnyAction } from "redux";
 
 export interface MenuState {
-    pressed: boolean
+    currentMenu: string
 }
 
 const initialState: MenuState = {
-    pressed: false
+    currentMenu: ''
 }
 
 function menu(state = initialState, action: AnyAction) {
     switch(action.type) {
-        case 'TOGGLE_MENU':
-            return {...state, pressed: !state.pressed};
+        case 'MENU_CHANGE':
+            return {...state, currentMenu: action.payload};
         default:
             return state;
     }

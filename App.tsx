@@ -1,10 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, View } from 'react-native';
-import { Provider } from 'react-redux';
-import { store } from './reducers/store';
+import { Provider, useSelector } from 'react-redux';
+import { RootState, store } from './reducers/store';
 import Player from './components/Player/Player';
 import GameMenu from './components/GameMenu/GameMenu';
+import { FC } from 'react';
 export default function App() {
+  const gameState = useSelector((state: RootState) => {
+    return state.game
+  });
   return (
     <Provider store={store}>
       <View style={styles.container}>
@@ -29,3 +33,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+function displayPlayers(numPlayers: number) {
+  let players: JSX.Element[] = []
+  for(let i = 0; i < numPlayers; i++) {
+    players.push(
+      <Player color={'black'} number={i}/>
+    )
+  }
+}

@@ -14,20 +14,26 @@ export default function GameMenu() {
             <View style={[
                 styles.container,
                 {
-                    height: menuState.pressed ? '100%' : 0,
-                    width: menuState.pressed ? '100%' : 0,
+                    height: menuState.currentMenu ? '100%' : 0,
+                    width: menuState.currentMenu ? '100%' : 0,
                 }
             ]}>
                 <View style={[
                     styles.buttons,
                     {
-                        height: menuState.pressed ? 250 : 0,
-                        width: menuState.pressed ? 250 : 0
+                        height: menuState.currentMenu ? 250 : 0,
+                        width: menuState.currentMenu ? 250 : 0
                     }
                     ]}>
-                    <MenuButton color={'black'} pressed={menuState.pressed}/>
+                    <MenuButton
+                        color={'black'}
+                        pressed={menuState.currentMenu !== ''}
+                        type={'MENU_CHANGE'}
+                        payload={menuState.currentMenu === 'MAIN_MENU' ? '' : 'MAIN_MENU'}
+                        text={'M'}
+                    />
                     {
-                        menuState.pressed && displayButtons()
+                        menuState.currentMenu && displayButtons(menuState.currentMenu)
                     }
                 </View>
             </View>
@@ -49,30 +55,74 @@ const styles = StyleSheet.create({
     }
 });
 
-const subButtons = [
+interface menuButtonDate {
+    color: string,
+    type: string,
+    payload: string,
+    text: string
+}
+
+const mainMenuButtons : menuButtonDate[] = [
     {
         color: 'skyblue',
-    },
-    {
-        color: 'gray',
-    },
-    {
-        color: 'purple'
-    },
-    {
-        color: 'yellow',
-    },
-    {
-        color: 'darkseagreen'
+        type: 'MENU_CHANGE',
+        payload: 'MENU_PLAYER_SELECT',
+        text: 'PS',
     }
 ];
 
-function displayButtons() {
-    const degreesBetween = 360/subButtons.length;
+const playerSelectButtons : menuButtonDate[] = [
+    {
+        color: 'black',
+        type: 'SET_NUM_PLAYERS',
+        payload: '2',
+        text: '2'
+    },
+    {
+        color: 'black',
+        type: 'SET_NUM_PLAYERS',
+        payload: '3',
+        text: '3'
+    },
+    {
+        color: 'black',
+        type: 'SET_NUM_PLAYERS',
+        payload: '4',
+        text: '4'
+    },
+    {
+        color: 'black',
+        type: 'SET_NUM_PLAYERS',
+        payload: '5',
+        text: '5'
+    },
+    {
+        color: 'black',
+        type: 'SET_NUM_PLAYERS',
+        payload: '6',
+        text: '6'
+    },
+];
+
+function displayButtons(currentMenu: string) {
+    let menuButtons: menuButtonDate[] | null = null;
+    switch(currentMenu) {
+        case 'MAIN_MENU':
+            menuButtons = mainMenuButtons;
+            break;
+        case 'MENU_PLAYER_SELECT':
+            menuButtons = playerSelectButtons;
+            break;
+        default:
+            console.error("Should not reach here");
+            menuButtons = [];
+            break;
+    }
+    const degreesBetween = 360/menuButtons.length;
     const radiansBetween = (degreesBetween*Math.PI)/180;
     const shift = Math.PI/2
 
-    return subButtons.map((button, index) => {
+    return menuButtons.map((button, index) => {
         const top = (Math.sin(radiansBetween*index - shift) * 110) + 100;
         const left = (Math.cos(radiansBetween * index - shift) * 110) + 100;
         return <MenuButton
@@ -81,6 +131,9 @@ function displayButtons() {
             pressed={true}
             left={left}
             top={top}
+            type={button.type}
+            text={button.text}
+            payload={button.payload}
             />
     })
 }

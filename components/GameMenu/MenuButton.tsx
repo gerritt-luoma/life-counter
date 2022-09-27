@@ -4,12 +4,15 @@ import { useDispatch } from "react-redux";
 
 interface MenuButtonProps {
     color: string,
+    type: string,
+    payload: string,
     pressed?: boolean,
+    text: string,
     left?: number,
     top?: number
 }
 
-export default function MenuButton({ color, pressed, left, top }: MenuButtonProps) {
+export default function MenuButton({ color, pressed, left, top, type, payload, text }: MenuButtonProps) {
     const dispatch = useDispatch();
     return (
         <View style={[
@@ -24,11 +27,11 @@ export default function MenuButton({ color, pressed, left, top }: MenuButtonProp
             <Pressable
             onPress={() =>{
                 console.log('Pressed');
-                dispatch({type: 'TOGGLE_MENU'});
+                dispatch({type: type, payload: payload});
             }}
             style={styles.button}
             >
-                <Text style={styles.text}>~</Text>
+                <Text style={styles.text}>{text}</Text>
             </Pressable>
         </View>
     )
