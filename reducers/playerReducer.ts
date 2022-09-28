@@ -1,4 +1,4 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit"
+import { AnyAction } from "@reduxjs/toolkit"
 
 export interface PlayerState {
     value: number
