@@ -1,11 +1,19 @@
 import { AnyAction } from "redux";
 
 export interface GameState {
-    numPlayers: number
+    numPlayers: number,
+    reset: ResetTypes
+}
+
+interface ResetTypes {
+    health: number
 }
 
 const initialState: GameState = {
-    numPlayers: 2
+    numPlayers: 2,
+    reset: {
+        health: 40
+    }
 }
 
 function gameReducer(state = initialState, action: AnyAction) {

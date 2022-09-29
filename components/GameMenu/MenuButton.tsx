@@ -9,10 +9,11 @@ interface MenuButtonProps {
     pressed?: boolean,
     text: string,
     left?: number,
-    top?: number
+    top?: number,
+    onPress?: Function
 }
 
-export default function MenuButton({ color, pressed, left, top, type, payload, text }: MenuButtonProps) {
+export default function MenuButton({ color, pressed, left, top, type, payload, text, onPress }: MenuButtonProps) {
     const dispatch = useDispatch();
     return (
         <View style={[
@@ -26,7 +27,7 @@ export default function MenuButton({ color, pressed, left, top, type, payload, t
             ]}>
             <Pressable
             onPress={() =>{
-                console.log('Pressed');
+                onPress?.();
                 dispatch({type: type, payload: payload});
             }}
             style={styles.button}

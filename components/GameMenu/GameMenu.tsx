@@ -1,8 +1,8 @@
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import MenuButton from "./MenuButton";
-import type { RootState } from "../../reducers/store";
-import { useSelector } from "react-redux";
+import { RootState, store } from "../../reducers/store";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function GameMenu() {
     const menuState = useSelector((state: RootState) => {
@@ -59,7 +59,8 @@ interface menuButtonDate {
     color: string,
     type: string,
     payload: string,
-    text: string
+    text: string,
+    onPress?: Function
 }
 
 const mainMenuButtons : menuButtonDate[] = [
@@ -68,6 +69,21 @@ const mainMenuButtons : menuButtonDate[] = [
         type: 'MENU_CHANGE',
         payload: 'MENU_PLAYER_SELECT',
         text: 'PS',
+    },
+    {
+        color: 'lightred',
+        type: 'MENU_CHANGE',
+        payload: '',
+        text: 'RS',
+        onPress() {
+            const state = store.getState();
+            for(let i = 0; i < state.game.numPlayers; i++) {
+                store.dispatch({
+                    type: `SET_${i}`,
+                    payload: state.game.reset.health
+                });
+            }
+        }
     }
 ];
 
@@ -134,6 +150,7 @@ function displayButtons(currentMenu: string) {
             type={button.type}
             text={button.text}
             payload={button.payload}
+            onPress={button.onPress}
             />
     })
 }
