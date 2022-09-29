@@ -1,4 +1,4 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit"
+import { AnyAction } from "@reduxjs/toolkit"
 
 export interface PlayerState {
     value: number
@@ -15,6 +15,8 @@ function createPlayerWithNumber(playerNumber=1) {
                 return {...state, value: state.value + 1};
             case `DECREMENT_${playerNumber}`:
                 return {...state, value: state.value - 1};
+            case `SET_${playerNumber}`:
+                return {...state, value: action.payload}
             default:
                 return state;
         }

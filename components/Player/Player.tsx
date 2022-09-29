@@ -26,7 +26,7 @@ export default function Player({ color, number }: PlayerProps) {
             default:
                 /* Adding this default to get around
                 typescript issues for now */
-                return state.player6;
+                return state.player0;
         }
     });
 

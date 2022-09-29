@@ -1,18 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit'
 import createPlayerWithNumber from './playerReducer'
 import menuReducer from './menuReducer';
+import gameReducer from './gameReducer';
 
 
 
 export const store = configureStore({
   reducer: {
+    player0: createPlayerWithNumber(0),
     player1: createPlayerWithNumber(1),
     player2: createPlayerWithNumber(2),
     player3: createPlayerWithNumber(3),
     player4: createPlayerWithNumber(4),
     player5: createPlayerWithNumber(5),
-    player6: createPlayerWithNumber(6),
-    menu: menuReducer
+    menu: menuReducer,
+    game: gameReducer,
   }
 });
 
