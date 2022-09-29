@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 interface MenuButtonProps {
     color: string,
     type: string,
-    payload: string,
+    payload: string | number,
     pressed?: boolean,
     text: string,
     left?: number,

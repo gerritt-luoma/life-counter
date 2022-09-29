@@ -55,15 +55,15 @@ const styles = StyleSheet.create({
     }
 });
 
-interface menuButtonDate {
+interface MenuButtonData {
     color: string,
     type: string,
-    payload: string,
+    payload: string | number,
     text: string,
     onPress?: Function
 }
 
-const mainMenuButtons : menuButtonDate[] = [
+const mainMenuButtons : MenuButtonData[] = [
     {
         color: 'skyblue',
         type: 'MENU_CHANGE',
@@ -87,41 +87,41 @@ const mainMenuButtons : menuButtonDate[] = [
     }
 ];
 
-const playerSelectButtons : menuButtonDate[] = [
+const playerSelectButtons : MenuButtonData[] = [
     {
         color: 'black',
         type: 'SET_NUM_PLAYERS',
-        payload: '2',
+        payload: 2,
         text: '2'
     },
     {
         color: 'black',
         type: 'SET_NUM_PLAYERS',
-        payload: '3',
+        payload: 3,
         text: '3'
     },
     {
         color: 'black',
         type: 'SET_NUM_PLAYERS',
-        payload: '4',
+        payload: 4,
         text: '4'
     },
     {
         color: 'black',
         type: 'SET_NUM_PLAYERS',
-        payload: '5',
+        payload: 5,
         text: '5'
     },
     {
         color: 'black',
         type: 'SET_NUM_PLAYERS',
-        payload: '6',
+        payload: 6,
         text: '6'
     },
 ];
 
 function displayButtons(currentMenu: string) {
-    let menuButtons: menuButtonDate[] | null = null;
+    let menuButtons: MenuButtonData[] | null = null;
     switch(currentMenu) {
         case 'MAIN_MENU':
             menuButtons = mainMenuButtons;

@@ -17,11 +17,18 @@ export default function Players() {
 }
 
 function displayPlayers(numPlayers: number) {
-    let players: JSX.Element[] = []
-    for(let i = 0; i < numPlayers; i++) {
-      players.push(
-        <Player key={i} color={'white'} number={i}/>
-      )
-    }
+    /*
+    There is a very good chance this is a dumb way to
+    do this.  Just creates an array of nums from 0..numPlayers
+    and returns a map of that many players with the appropriate
+    keys/numbers
+
+    TODO: Need to assign the correct color to the player.  Maybe
+    remove the color from the props and instead set it from the
+    player state
+    */
+    let players = [...Array(numPlayers).keys()].map(key => {
+        return <Player key={key} color={'white'} number={key}/>
+    });
     return players;
 }
